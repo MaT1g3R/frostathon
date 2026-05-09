@@ -40,6 +40,36 @@
 
 
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.close-btn {
+    cursor: pointer;
+    color: #888;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #f00;
+}
+
+#contestant-selector {
+    margin: 10px;
+    padding: 5px;
+}
+
+#refresh {
+    margin: 10px;
+    padding: 5px 10px;
+}
+
 @media screen and (max-width: 850px) {
 	#deck-container .char-inactive {
 		display: none;

@@ -9,7 +9,10 @@
   <body>
     <script src="CardData.js"></script>
     <script src="script.js"></script>
-    <button id='refresh' onClick='fetchGameData().then((data) => console.log("fetched"))'>⟳ Refresh</button>
+    <button id='refresh' onClick='refreshVisibleDecks()'>⟳ Refresh</button>
+    <select id="contestant-selector">
+        <option value="" disabled selected>Select a player</option>
+    </select>
     <p id='title'>Decklists:</p>
     <div id='decklists'>
         <div id='contestant-btns'></div>
