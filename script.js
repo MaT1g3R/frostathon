@@ -2,20 +2,47 @@ const TWITCH_IDS = {
     vmService: 59817220,
     OnePunMan_: 115770251,
     paparatto18: 64195856,
+    FrostPrime: 95416766,
 };
 
-const CONTESTANTS = [
-    "vmService",
-    "OnePunMan_",
-    "paparatto18",
-];
+const CONTESTANTS = Object.keys(TWITCH_IDS);
+
+const BOSSES = {
+    waterfall_giant_boss: 1,
+    lagavulin_matriarch_boss: 1,
+    ceremonial_beast_boss: 1,
+    the_kin_boss: 1,
+    soul_fysh_boss: 1,
+    vantom_boss: 1,
+    knowledge_demon_boss: 2,
+    kaiser_crab_boss: 2,
+    the_insatiable_boss: 2,
+    test_subject_boss: 3,
+    aeonglass_boss: 3,
+    queen_boss: 3,
+}
 
 
 let visibleContestants = new Set();
+let refreshInterval = null;
 
 window.addEventListener('load', () => {
     setupSelector();
+    setupAutoRefresh();
 });
+
+function setupAutoRefresh() {
+    const checkbox = document.getElementById("auto-refresh-checkbox");
+    checkbox.addEventListener('change', (e) => {
+        if (e.target.checked) {
+            refreshVisibleDecks(); // Initial refresh when checked
+            refreshInterval = setInterval(refreshVisibleDecks, 5000); // Refresh every 5 seconds
+        } else {
+            clearInterval(refreshInterval);
+            refreshInterval = null;
+        }
+    });
+}
 
 function setupSelector() {
     const selector = document.getElementById("contestant-selector");
