@@ -109,12 +109,17 @@ async function fetchGameData(contestant) {
             header.textContent = contestant;
             header.className = "contestant-header";
 
+            const actDisplay = document.createElement("div");
+            actDisplay.className = "act-display";
+            actDisplay.textContent = "Act: ?";
+
             const closeBtn = document.createElement("span");
             closeBtn.textContent = "✖";
             closeBtn.className = "close-btn";
             closeBtn.onclick = () => removeContestant(contestant);
 
             headerContainer.appendChild(header);
+            headerContainer.appendChild(actDisplay);
             headerContainer.appendChild(closeBtn);
             wrapper.appendChild(headerContainer);
 
@@ -124,6 +129,10 @@ async function fetchGameData(contestant) {
 
             rootElem.appendChild(wrapper);
         }
+
+        const actDisplay = wrapper.querySelector(".act-display");
+        const act = BOSSES[data.boss] || "?";
+        actDisplay.textContent = `Act: ${act}`;
 
         const deckList = wrapper.querySelector(".contestant-decklist");
         deckList.innerHTML = ""; // Clear current deck

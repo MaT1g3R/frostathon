@@ -2,6 +2,12 @@
 	font-weight: bold;
 }
 
+.act-display {
+    font-style: italic;
+    color: #555;
+    margin-left: 10px;
+}
+
 .contestant-decklist {
 	margin: 15px 20px 0px 5px;
 	display: flex;
@@ -42,7 +48,7 @@
 
 .header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: #eee;
     padding: 5px 10px;
@@ -54,6 +60,7 @@
     color: #888;
     font-size: 20px;
     line-height: 1;
+    margin-left: auto;
 }
 
 .close-btn:hover {
