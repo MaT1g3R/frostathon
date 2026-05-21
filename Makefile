@@ -2,4 +2,4 @@ clean:
 	rm -f deploy.zip
 
 build: clean
-	zip deploy.zip CardData.js index.html script.js styles.css
+	zip -r deploy.zip relics CardData.js index.html script.js styles.css

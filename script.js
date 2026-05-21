@@ -128,6 +128,10 @@ async function fetchGameData(contestant) {
             headerContainer.appendChild(closeBtn);
             wrapper.appendChild(headerContainer);
 
+            const relicList = document.createElement("div");
+            relicList.className = `contestant-reliclist ${contestant}`;
+            wrapper.appendChild(relicList);
+
             const deckList = document.createElement("div");
             deckList.className = `contestant-decklist ${contestant}`;
             wrapper.appendChild(deckList);
@@ -152,6 +156,15 @@ async function fetchGameData(contestant) {
 
         for (let card of data.deck) {
             renderCard(card, deckList);
+        }
+
+        const relicList = wrapper.querySelector(".contestant-reliclist");
+        relicList.innerHTML = ""; // Clear current relics
+
+        if (data.relics) {
+            for (let relic of data.relics) {
+                renderRelic(relic, relicList);
+            }
         }
 
     } catch (error) {
@@ -188,4 +201,12 @@ function renderCard(cardID, parent) {
     card.className = 'card-container';
     card.innerHTML = `<div class="card-image" style="background-image: url(&quot;${getImageUrl(cardID)}&quot;);"></div>`;
     parent.appendChild(card);
+}
+
+function renderRelic(relicName, parent) {
+    const relic = document.createElement("div");
+    relic.className = 'relic-container';
+    const imageName = relicName.toLowerCase().replaceAll(" ", "_").replaceAll("'", "");
+    relic.innerHTML = `<img src="relics/${imageName}.png" class="relic-image" title="${relicName}" alt="${relicName}">`;
+    parent.appendChild(relic);
 }
