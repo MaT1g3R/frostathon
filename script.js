@@ -113,6 +113,10 @@ async function fetchGameData(contestant) {
             actDisplay.className = "act-display";
             actDisplay.textContent = "Act: ?";
 
+            const floorDisplay = document.createElement("div");
+            floorDisplay.className = "floor-display";
+            floorDisplay.textContent = "Floor: ?";
+
             const closeBtn = document.createElement("span");
             closeBtn.textContent = "✖";
             closeBtn.className = "close-btn";
@@ -120,6 +124,7 @@ async function fetchGameData(contestant) {
 
             headerContainer.appendChild(header);
             headerContainer.appendChild(actDisplay);
+            headerContainer.appendChild(floorDisplay);
             headerContainer.appendChild(closeBtn);
             wrapper.appendChild(headerContainer);
 
@@ -133,6 +138,14 @@ async function fetchGameData(contestant) {
         const actDisplay = wrapper.querySelector(".act-display");
         const act = BOSSES[data.boss] || "?";
         actDisplay.textContent = `Act: ${act}`;
+
+        const floorDisplay = wrapper.querySelector(".floor-display");
+        if (data.floor !== undefined) {
+            floorDisplay.textContent = `Floor: ${data.floor}`;
+            floorDisplay.style.display = "block";
+        } else {
+            floorDisplay.style.display = "none";
+        }
 
         const deckList = wrapper.querySelector(".contestant-decklist");
         deckList.innerHTML = ""; // Clear current deck

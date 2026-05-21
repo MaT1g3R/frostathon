@@ -2,7 +2,7 @@
 	font-weight: bold;
 }
 
-.act-display {
+.act-display, .floor-display {
     font-style: italic;
     color: #555;
     margin-left: 10px;
