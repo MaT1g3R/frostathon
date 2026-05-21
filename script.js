@@ -33,15 +33,27 @@ window.addEventListener('load', () => {
 
 function setupAutoRefresh() {
     const checkbox = document.getElementById("auto-refresh-checkbox");
-    checkbox.addEventListener('change', (e) => {
-        if (e.target.checked) {
-            refreshVisibleDecks(); // Initial refresh when checked
-            refreshInterval = setInterval(refreshVisibleDecks, 5000); // Refresh every 5 seconds
+    
+    const toggleRefresh = () => {
+        if (checkbox.checked) {
+            if (!refreshInterval) {
+                refreshVisibleDecks();
+                refreshInterval = setInterval(refreshVisibleDecks, 5000);
+            }
         } else {
-            clearInterval(refreshInterval);
-            refreshInterval = null;
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+                refreshInterval = null;
+            }
         }
-    });
+    };
+
+    checkbox.addEventListener('change', toggleRefresh);
+
+    // Initial check on page load
+    if (checkbox.checked) {
+        toggleRefresh();
+    }
 }
 
 function setupSelector() {
