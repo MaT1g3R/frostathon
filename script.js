@@ -129,10 +129,19 @@ async function fetchGameData(contestant) {
 
     try {
         const response = await fetch(url);
-        if (!response.ok) {
+        let data;
+        if (response.status === 404) {
+            data = {
+                deck: [],
+                relics: [],
+                boss: null,
+                floor: undefined
+            };
+        } else if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
+        } else {
+            data = await response.json();
         }
-        const data = await response.json();
 
         // Check if still visible (could have been closed while fetching)
         if (!visibleContestants.has(contestant)) return;
@@ -194,8 +203,10 @@ async function fetchGameData(contestant) {
         const deckList = wrapper.querySelector(".contestant-decklist");
         deckList.innerHTML = ""; // Clear current deck
 
-        for (let card of data.deck) {
-            renderCard(card, deckList);
+        if (data.deck) {
+            for (let card of data.deck) {
+                renderCard(card, deckList);
+            }
         }
 
         const relicList = wrapper.querySelector(".contestant-reliclist");
