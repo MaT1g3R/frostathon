@@ -1,9 +1,37 @@
 const TWITCH_IDS = {
-    vmService: 59817220,
-    OnePunMan_: 115770251,
-    paparatto18: 64195856,
-    FrostPrime: 95416766,
-};
+    "admiralbahroo": "40972890",
+    "aplatypuss": "39464264",
+    "azzapp": "35866558",
+    "bookshelf2029": "497527623",
+    "boxbox": "38881685",
+    "commentbagel": "110883776",
+    "dreads": "38442474",
+    "falco": "71427323",
+    "hamjuicegaming": "634698559",
+    "heybillierae": "521098582",
+    "j4ckie": "92743646",
+    "japaneseexport": "116377450",
+    "jocat": "111203619",
+    "kwehzy": "39416119",
+    "ludwig": "40934651",
+    "merl61": "68263888",
+    "michaelalfox": "19336638",
+    "multibradx": "1249420636",
+    "nandre": "39842292",
+    "onepunman_": "115770251",
+    "paparatto18": "64195856",
+    "quinnjamin_tv": "136807385",
+    "rarran": "67379182",
+    "roffle": "91200728",
+    "skootish": "71058462",
+    "squidinkidink": "473313737",
+    "stanz": "36221636",
+    "stellie": "413823427",
+    "switchssb": "45745035",
+    "thecrimsonblur": "12835111",
+    "vmservice": "59817220",
+    "wavy": "81578595"
+}
 
 const CONTESTANTS = Object.keys(TWITCH_IDS);
 
@@ -33,7 +61,7 @@ window.addEventListener('load', () => {
 
 function setupAutoRefresh() {
     const checkbox = document.getElementById("auto-refresh-checkbox");
-    
+
     const toggleRefresh = () => {
         if (checkbox.checked) {
             if (!refreshInterval) {
