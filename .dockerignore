@@ -1,0 +1,6 @@
+.git
+.idea
+Makefile
+deploy.zip
+Dockerfile
+.dockerignore
