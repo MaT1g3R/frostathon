@@ -1,10 +1,26 @@
-﻿.contestant-header {
+﻿#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white; /* Make text readable against dark backgrounds */
+}
+
+.contestant-header {
 	font-weight: bold;
 }
 
 .act-display, .floor-display {
     font-style: italic;
-    color: #555;
+    color: #ccc;
     margin-left: 10px;
 }
 
@@ -64,14 +80,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #eee;
+    background-color: rgba(238, 238, 238, 0.2);
     padding: 5px 10px;
     border-radius: 4px;
 }
 
 .close-btn {
     cursor: pointer;
-    color: #888;
+    color: #ccc;
     font-size: 20px;
     line-height: 1;
     margin-left: auto;
@@ -98,6 +114,11 @@
     gap: 5px;
     font-size: 14px;
     cursor: pointer;
+    color: white;
+}
+
+#title {
+    color: white;
 }
 
 @media screen and (max-width: 850px) {
